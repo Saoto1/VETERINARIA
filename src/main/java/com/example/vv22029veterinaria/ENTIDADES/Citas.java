@@ -10,6 +10,15 @@ public class Citas {
     private String idPaciente;
     private String idEstadoCita;
 
+    public Citas(String id, Date fechaCita, String nombrePaciente, String motivoCita, String idPaciente, String idEstadoCita) {
+        this.id = id;
+        this.fechaCita = fechaCita;
+        this.nombrePaciente = nombrePaciente;
+        this.motivoCita = motivoCita;
+        this.idPaciente = idPaciente;
+        this.idEstadoCita = idEstadoCita;
+    }
+
     public String getId() {
         return id;
     }

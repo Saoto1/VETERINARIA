@@ -17,6 +17,21 @@ public class Paciente {
     private Date fechaNacimiento;
     private String estadoPaciente;
 
+    public Paciente(String id, String nombre, String nombrePropietario, int edad, String idCategoria, String sexo, String idRazaInscripcion, String idRaza, double altura, double peso, Date fechaNacimiento, String estadoPaciente) {
+        this.id = id;
+        this.nombre = nombre;
+        this.nombrePropietario = nombrePropietario;
+        this.edad = edad;
+        this.idCategoria = idCategoria;
+        this.sexo = sexo;
+        this.idRazaInscripcion = idRazaInscripcion;
+        this.idRaza = idRaza;
+        this.altura = altura;
+        this.peso = peso;
+        this.fechaNacimiento = fechaNacimiento;
+        this.estadoPaciente = estadoPaciente;
+    }
+
     public String getId() {
         return id;
     }
