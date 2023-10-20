@@ -1,6 +1,11 @@
 package com.example.vv22029veterinaria.ENTIDADES;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
 
 public class Raza {
 
@@ -10,11 +15,22 @@ public class Raza {
 
     private Date FechaCreacion;
 
-    public Raza(int id, String nombre, Date fechaCreacion) {
-        this.id = id;
-        Nombre = nombre;
-        FechaCreacion = fechaCreacion;
+    public Raza(String str) {
+
+        String[] partes = str.split(",");
+
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+
+        this.id = Integer.parseInt(partes[0]);;
+        Nombre =  partes[1];
+
+        try {
+            FechaCreacion = formato.parse(partes[2]);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
     }
+
 
     public int getId() {
         return id;
