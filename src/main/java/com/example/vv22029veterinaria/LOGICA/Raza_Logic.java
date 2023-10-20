@@ -22,7 +22,7 @@ public class Raza_Logic implements IRaza {
     public void CargarDirectorio() {
 
         Properties properties = new Properties();
-        try (FileInputStream fileInputStream = new FileInputStream("C:\\Users\\Gamer\\Desktop\\Archivos de proyectos\\VV22029-VETERINARIA\\src\\main\\java\\com\\example\\vv22029veterinaria\\Config.properties")) {
+        try (FileInputStream fileInputStream = new FileInputStream("src/main/java/com/example/vv22029veterinaria/Config.properties")) {
             properties.load(fileInputStream);
 
             // Accede a valores de configuración
