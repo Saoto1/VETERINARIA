@@ -1,32 +1,51 @@
 package com.example.vv22029veterinaria.ENTIDADES;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Vacunas {
 
-    private String id;
+    private int id;
     private Date fechaVaccuna;
     private String nombreVaccuna;
     private double peso;
     private double altura;
     private int edad;
-    private String idPaciente;
+    private int idPaciente;
 
-    public Vacunas(String id, Date fechaVaccuna, String nombreVaccuna, double peso, double altura, int edad, String idPaciente) {
-        this.id = id;
-        this.fechaVaccuna = fechaVaccuna;
-        this.nombreVaccuna = nombreVaccuna;
-        this.peso = peso;
-        this.altura = altura;
-        this.edad = edad;
-        this.idPaciente = idPaciente;
+
+    public Vacunas() {
     }
 
-    public String getId() {
+    public Vacunas(String str) {
+
+        try {
+            String[] partes = str.split(",");
+
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+
+
+            this.id = Integer.parseInt(partes[0]);
+            this.fechaVaccuna = formato.parse(partes[1]);
+            this.nombreVaccuna = partes[2];
+            this.peso = Double.parseDouble(partes[3]);
+            this.altura = Double.parseDouble(partes[4]);
+            this.edad = Integer.parseInt(partes[5]);
+            this.idPaciente = Integer.parseInt(partes[6]);
+
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+
+
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -70,11 +89,11 @@ public class Vacunas {
         this.edad = edad;
     }
 
-    public String getIdPaciente() {
+    public int getIdPaciente() {
         return idPaciente;
     }
 
-    public void setIdPaciente(String idPaciente) {
+    public void setIdPaciente(int idPaciente) {
         this.idPaciente = idPaciente;
     }
 }

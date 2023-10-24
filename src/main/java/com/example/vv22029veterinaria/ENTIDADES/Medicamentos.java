@@ -1,5 +1,7 @@
 package com.example.vv22029veterinaria.ENTIDADES;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Medicamentos {
@@ -10,11 +12,27 @@ public class Medicamentos {
 
     private Date FechaCreacion;
 
-    public Medicamentos(int id, String nombre, Date fechaCreacion) {
-        this.id = id;
-        Nombre = nombre;
-        FechaCreacion = fechaCreacion;
+
+    public Medicamentos(){}
+
+    public Medicamentos(String str) {
+
+        String[] partes = str.split(",");
+
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+
+        this.id = Integer.parseInt(partes[0]);;
+        Nombre =  partes[1];
+
+        try {
+            FechaCreacion = formato.parse(partes[2]);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
     }
+
+
+
 
     public int getId() {
         return id;

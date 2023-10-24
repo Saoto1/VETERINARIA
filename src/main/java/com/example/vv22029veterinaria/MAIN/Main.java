@@ -1,6 +1,8 @@
 package com.example.vv22029veterinaria.MAIN;
 
+import com.example.vv22029veterinaria.ENTIDADES.Medicamentos;
 import com.example.vv22029veterinaria.ENTIDADES.Raza;
+import com.example.vv22029veterinaria.ENTIDADES.Vacunas;
 import com.example.vv22029veterinaria.LOGICA.*;
 
 import java.util.Date;
@@ -43,6 +45,35 @@ public class Main {
         List<Raza> ListaRaza = razaLogic.ObtenerRaza();
         razaLogic.Eliminar(Razacreada.getId());
 
+
+        //-------Prueba de metodos crud de Vacuna
+        Vacunas VacunaCreada = new Vacunas();
+        VacunaCreada.setId(3);
+        VacunaCreada.setFechaVaccuna(new Date());
+        VacunaCreada.setNombreVaccuna("Influenza");
+        VacunaCreada.setPeso(3.4);
+        VacunaCreada.setAltura(3.4);
+        VacunaCreada.setEdad(23);
+        VacunaCreada.setIdPaciente(2);
+
+        vacunaLogic.Crear(VacunaCreada);
+        VacunaCreada.setNombreVaccuna("H1N1");
+        vacunaLogic.Actualizar(VacunaCreada);
+        List<Vacunas> vacunasList = vacunaLogic.ObtenerVacunas();
+        vacunaLogic.Eliminar(VacunaCreada.getId());
+
+
+        //-------Prueba de metodos crud de raza
+        Medicamentos medicamentosCreado = new Medicamentos();
+        medicamentosCreado.setId(3);
+        medicamentosCreado.setNombre("Paracetamol");
+        medicamentosCreado.setFechaCreacion(new Date());
+
+        medicamentosLogic.Crear(medicamentosCreado);
+        medicamentosCreado.setNombre("Acetaminofen");
+        medicamentosLogic.Actualizar(medicamentosCreado);
+        List<Medicamentos> medicamentosList = medicamentosLogic.ObtenerMedicamentos();
+        medicamentosLogic.Eliminar(medicamentosCreado.getId());
 
 
     }
