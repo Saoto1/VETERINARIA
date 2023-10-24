@@ -15,6 +15,8 @@ public class Raza {
 
     private Date FechaCreacion;
 
+    public Raza(){}
+
     public Raza(String str) {
 
         String[] partes = str.split(",");
