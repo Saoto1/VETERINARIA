@@ -63,16 +63,6 @@ public class Vacuna_Logic implements IVacuna {
     public boolean Crear(Vacunas vacunas) {
 
         try {
-            List<Vacunas> vacunasList = this.ObtenerVacunas();
-            int size = vacunasList.size();
-            int id = 1;
-
-            if (size > 0) {
-                id = vacunasList.get(size - 1).getId() + 1;
-            }
-
-            vacunas.setId(id);
-
 
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             String fechaFormateada = sdf.format(vacunas.getFechaVaccuna());
@@ -131,47 +121,57 @@ public class Vacuna_Logic implements IVacuna {
     }
 
     @Override
-    public boolean Eliminar(int idVacuna) {
+    public  boolean Eliminar(int id) {
 
-        try {
-            // Leer el archivo y almacenar las líneas en una lista
-            List<String> lines = new ArrayList<>();
-            BufferedReader reader = new BufferedReader(new FileReader(FileDirectorio));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                // Dividir la línea en partes (considerando que el ID es la primera parte)
-                String[] parts = line.split(",");
-                if (parts.length > 0) {
-                    try {
-                        int id = Integer.parseInt(parts[0]);
-                        if (id != idVacuna) {
-                            // Agregar la línea al contenido si el ID no coincide con el ID a eliminar
-                            lines.add(line);
-                        }
-                    } catch (NumberFormatException e) {
-                        // Manejar el caso en el que no se pueda convertir el ID a un número
-                        System.err.println("Error al leer el ID en la línea: " + line);
-                    }
-                }
+        //Busca el registro
+        List<Vacunas> vacunas = ObtenerVacunas();
+        Vacunas VacunaEliminar = null;
+        for (Vacunas Vacuna : vacunas) {
+            if (Vacuna.getId() == id) {
+                VacunaEliminar = Vacuna;
+                break;
             }
-            reader.close();
+        }
 
-            // Sobrescribir el archivo con el contenido actualizado
-            BufferedWriter writer = new BufferedWriter(new FileWriter(FileDirectorio));
-            for (String newLine : lines) {
-                writer.write(newLine);
-                writer.newLine(); // Agregar un salto de línea
-            }
-            writer.close();
-
-            System.out.println("Línea con ID " + idVacuna + " eliminada exitosamente.");
+        //Lo elimina de la lista y sobre escribe el archivo
+        if (VacunaEliminar != null) {
+            vacunas.remove(VacunaEliminar);
+            guardarListaEnArchivo(vacunas);
+            System.out.println("Objeto con ID " + id + " eliminado con éxito.");
 
             return true;
-        } catch (IOException e) {
-            e.printStackTrace();
+        } else {
+            System.out.println("No se encontró ningún objeto con el ID " + id);
 
             return false;
         }
-
     }
+
+
+    public  void guardarListaEnArchivo(List<Vacunas> lista) {
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FileDirectorio, false))) {
+
+            if (lista.isEmpty()){return;}
+
+            for (Vacunas objeto : lista) {
+                // Crear un objeto SimpleDateFormat con el formato deseado
+                SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                // Formatear la fecha a una cadena
+                String fechaFormateada = formato.format(objeto.getFechaVaccuna());
+
+                String objetoAEscribir = objeto.getId()+","+fechaFormateada+"," +objeto.getNombreVaccuna()+"," +objeto.getPeso()+"," +objeto.getAltura()+"," +objeto.getEdad()+"," +objeto.getIdPaciente()+",";
+                writer.write(objetoAEscribir);
+                writer.newLine();
+
+            }
+            System.out.println("Lista actualizada y guardada en el archivo: " + FileDirectorio);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
 }

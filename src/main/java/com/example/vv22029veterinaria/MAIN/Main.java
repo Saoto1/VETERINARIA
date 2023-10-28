@@ -34,27 +34,28 @@ public class Main {
     public static void main(String[] args) {
 
         //-------Prueba de metodos crud de raza
-        Raza Razacreada = new Raza();
-        Razacreada.setId(3);
-        Razacreada.setNombre("Dalmata");
-        Razacreada.setFechaCreacion(new Date());
-
-        razaLogic.Crear(Razacreada);
-        Razacreada.setNombre("Danes");
-        razaLogic.Actualizar(Razacreada);
-        List<Raza> ListaRaza = razaLogic.ObtenerRaza();
-        razaLogic.Eliminar(Razacreada.getId());
+//        Raza Razacreada = new Raza();
+//        Razacreada.setId(3);
+//        Razacreada.setNombre("Dalmata");
+//        Razacreada.setFechaCreacion(new Date());
+//
+//        razaLogic.Crear(Razacreada);
+//        Razacreada.setNombre("Danes");
+//        razaLogic.Actualizar(Razacreada);
+//        List<Raza> ListaRaza = razaLogic.ObtenerRaza();
+//        razaLogic.Eliminar(Razacreada.getId());
 
 
         //-------Prueba de metodos crud de Vacuna
         Vacunas VacunaCreada = new Vacunas();
-        VacunaCreada.setId(3);
+        VacunaCreada.setId(9);
         VacunaCreada.setFechaVaccuna(new Date());
         VacunaCreada.setNombreVaccuna("Influenza");
         VacunaCreada.setPeso(3.4);
         VacunaCreada.setAltura(3.4);
         VacunaCreada.setEdad(23);
         VacunaCreada.setIdPaciente(2);
+
 
         vacunaLogic.Crear(VacunaCreada);
         VacunaCreada.setNombreVaccuna("H1N1");
@@ -64,16 +65,16 @@ public class Main {
 
 
         //-------Prueba de metodos crud de raza
-        Medicamentos medicamentosCreado = new Medicamentos();
-        medicamentosCreado.setId(3);
-        medicamentosCreado.setNombre("Paracetamol");
-        medicamentosCreado.setFechaCreacion(new Date());
-
-        medicamentosLogic.Crear(medicamentosCreado);
-        medicamentosCreado.setNombre("Acetaminofen");
-        medicamentosLogic.Actualizar(medicamentosCreado);
-        List<Medicamentos> medicamentosList = medicamentosLogic.ObtenerMedicamentos();
-        medicamentosLogic.Eliminar(medicamentosCreado.getId());
+//        Medicamentos medicamentosCreado = new Medicamentos();
+//        medicamentosCreado.setId(3);
+//        medicamentosCreado.setNombre("Paracetamol");
+//        medicamentosCreado.setFechaCreacion(new Date());
+//
+//        medicamentosLogic.Crear(medicamentosCreado);
+//        medicamentosCreado.setNombre("Acetaminofen");
+//        medicamentosLogic.Actualizar(medicamentosCreado);
+//        List<Medicamentos> medicamentosList = medicamentosLogic.ObtenerMedicamentos();
+//        medicamentosLogic.Eliminar(medicamentosCreado.getId());
 
 
     }
