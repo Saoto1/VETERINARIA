@@ -1,9 +1,12 @@
 package com.example.vv22029veterinaria.ENTIDADES;
 
+import lombok.Data;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@Data
 public class Vacunas {
 
     private int id;
@@ -41,59 +44,5 @@ public class Vacunas {
 
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Date getFechaVaccuna() {
-        return fechaVaccuna;
-    }
-
-    public void setFechaVaccuna(Date fechaVaccuna) {
-        this.fechaVaccuna = fechaVaccuna;
-    }
-
-    public String getNombreVaccuna() {
-        return nombreVaccuna;
-    }
-
-    public void setNombreVaccuna(String nombreVaccuna) {
-        this.nombreVaccuna = nombreVaccuna;
-    }
-
-    public double getPeso() {
-        return peso;
-    }
-
-    public void setPeso(double peso) {
-        this.peso = peso;
-    }
-
-    public double getAltura() {
-        return altura;
-    }
-
-    public void setAltura(double altura) {
-        this.altura = altura;
-    }
-
-    public int getEdad() {
-        return edad;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
-    public int getIdPaciente() {
-        return idPaciente;
-    }
-
-    public void setIdPaciente(int idPaciente) {
-        this.idPaciente = idPaciente;
-    }
 }

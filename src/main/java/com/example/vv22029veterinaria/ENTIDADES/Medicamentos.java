@@ -1,9 +1,12 @@
 package com.example.vv22029veterinaria.ENTIDADES;
 
+import lombok.Data;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@Data
 public class Medicamentos {
 
     private int id;
@@ -32,29 +35,4 @@ public class Medicamentos {
     }
 
 
-
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return Nombre;
-    }
-
-    public void setNombre(String nombre) {
-        Nombre = nombre;
-    }
-
-    public Date getFechaCreacion() {
-        return FechaCreacion;
-    }
-
-    public void setFechaCreacion(Date fechaCreacion) {
-        FechaCreacion = fechaCreacion;
-    }
 }

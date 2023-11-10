@@ -1,69 +1,42 @@
 package com.example.vv22029veterinaria.ENTIDADES;
 
+import lombok.Data;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@Data
 public class Citas {
-    private String id;
+    private int id;
     private Date fechaCita;
     private String nombrePaciente;
     private String motivoCita;
-    private String idPaciente;
-    private String idEstadoCita;
+    private int idPaciente;
+    private int idEstadoCita;
 
-    public Citas(String id, Date fechaCita, String nombrePaciente, String motivoCita, String idPaciente, String idEstadoCita) {
-        this.id = id;
-        this.fechaCita = fechaCita;
-        this.nombrePaciente = nombrePaciente;
-        this.motivoCita = motivoCita;
-        this.idPaciente = idPaciente;
-        this.idEstadoCita = idEstadoCita;
+
+    public Citas() {}
+
+    public Citas(String str) {
+
+        String[] partes = str.split(",");
+
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+
+        this.id = Integer.parseInt(partes[0]);
+
+        try {
+           this.fechaCita = formato.parse(partes[1]);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+        this.motivoCita = partes[2];
+        this.nombrePaciente = partes[3];
+        this.motivoCita = partes[4];
+        this.idPaciente = Integer.parseInt(partes[5]);
+        this.idEstadoCita = Integer.parseInt(partes[6]);
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public Date getFechaCita() {
-        return fechaCita;
-    }
-
-    public void setFechaCita(Date fechaCita) {
-        this.fechaCita = fechaCita;
-    }
-
-    public String getNombrePaciente() {
-        return nombrePaciente;
-    }
-
-    public void setNombrePaciente(String nombrePaciente) {
-        this.nombrePaciente = nombrePaciente;
-    }
-
-    public String getMotivoCita() {
-        return motivoCita;
-    }
-
-    public void setMotivoCita(String motivoCita) {
-        this.motivoCita = motivoCita;
-    }
-
-    public String getIdPaciente() {
-        return idPaciente;
-    }
-
-    public void setIdPaciente(String idPaciente) {
-        this.idPaciente = idPaciente;
-    }
-
-    public String getIdEstadoCita() {
-        return idEstadoCita;
-    }
-
-    public void setIdEstadoCita(String idEstadoCita) {
-        this.idEstadoCita = idEstadoCita;
-    }
 }

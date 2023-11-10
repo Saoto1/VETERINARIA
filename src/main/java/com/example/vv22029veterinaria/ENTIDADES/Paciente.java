@@ -1,130 +1,57 @@
 package com.example.vv22029veterinaria.ENTIDADES;
 
+import lombok.Data;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@Data
 public class Paciente {
 
-    private String id;
+    private int id;
     private String nombre;
     private String nombrePropietario;
     private int edad;
-    private String idCategoria;
+    private int idCategoria;
     private String sexo;
-    private String idRazaInscripcion;
-    private String idRaza;
+    private int idRazaInscripcion;
+    private int idRaza;
     private double altura;
     private double peso;
     private Date fechaNacimiento;
     private String estadoPaciente;
 
-    public Paciente(String id, String nombre, String nombrePropietario, int edad, String idCategoria, String sexo, String idRazaInscripcion, String idRaza, double altura, double peso, Date fechaNacimiento, String estadoPaciente) {
-        this.id = id;
-        this.nombre = nombre;
-        this.nombrePropietario = nombrePropietario;
-        this.edad = edad;
-        this.idCategoria = idCategoria;
-        this.sexo = sexo;
-        this.idRazaInscripcion = idRazaInscripcion;
-        this.idRaza = idRaza;
-        this.altura = altura;
-        this.peso = peso;
-        this.fechaNacimiento = fechaNacimiento;
-        this.estadoPaciente = estadoPaciente;
+
+    public Paciente() {}
+
+    public Paciente(String str) {
+
+        String[] partes = str.split(",");
+
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+
+        this.id = Integer.parseInt(partes[0]);
+        this.nombre = partes[1];
+        this.nombrePropietario = partes[2];
+        this.edad = Integer.parseInt(partes[3]);
+        this.idCategoria = Integer.parseInt(partes[4]);
+        this.sexo = partes[5];
+        this.idRazaInscripcion = Integer.parseInt(partes[6]);
+        this.idRaza = Integer.parseInt(partes[7]);
+        this.altura = Double.parseDouble(partes[8]);
+        this.peso = Double.parseDouble(partes[9]);
+
+        try {
+            this.fechaNacimiento = formato.parse(partes[10]);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+        this.estadoPaciente = partes[11];
+
     }
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getNombrePropietario() {
-        return nombrePropietario;
-    }
-
-    public void setNombrePropietario(String nombrePropietario) {
-        this.nombrePropietario = nombrePropietario;
-    }
-
-    public int getEdad() {
-        return edad;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
-    public String getIdCategoria() {
-        return idCategoria;
-    }
-
-    public void setIdCategoria(String idCategoria) {
-        this.idCategoria = idCategoria;
-    }
-
-    public String getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
-    }
-
-    public String getIdRazaInscripcion() {
-        return idRazaInscripcion;
-    }
-
-    public void setIdRazaInscripcion(String idRazaInscripcion) {
-        this.idRazaInscripcion = idRazaInscripcion;
-    }
-
-    public String getIdRaza() {
-        return idRaza;
-    }
-
-    public void setIdRaza(String idRaza) {
-        this.idRaza = idRaza;
-    }
-
-    public double getAltura() {
-        return altura;
-    }
-
-    public void setAltura(double altura) {
-        this.altura = altura;
-    }
-
-    public double getPeso() {
-        return peso;
-    }
-
-    public void setPeso(double peso) {
-        this.peso = peso;
-    }
-
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public String getEstadoPaciente() {
-        return estadoPaciente;
-    }
-
-    public void setEstadoPaciente(String estadoPaciente) {
-        this.estadoPaciente = estadoPaciente;
-    }
 }

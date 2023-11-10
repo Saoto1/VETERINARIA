@@ -1,5 +1,6 @@
 package com.example.vv22029veterinaria.MAIN;
 
+import com.example.vv22029veterinaria.ENTIDADES.Categoria;
 import com.example.vv22029veterinaria.ENTIDADES.Medicamentos;
 import com.example.vv22029veterinaria.ENTIDADES.Raza;
 import com.example.vv22029veterinaria.ENTIDADES.Vacunas;
@@ -34,16 +35,16 @@ public class Main {
     public static void main(String[] args) {
 
         //-------Prueba de metodos crud de raza
-//        Raza Razacreada = new Raza();
-//        Razacreada.setId(3);
-//        Razacreada.setNombre("Dalmata");
-//        Razacreada.setFechaCreacion(new Date());
-//
-//        razaLogic.Crear(Razacreada);
-//        Razacreada.setNombre("Danes");
-//        razaLogic.Actualizar(Razacreada);
-//        List<Raza> ListaRaza = razaLogic.ObtenerRaza();
-//        razaLogic.Eliminar(Razacreada.getId());
+        Raza Razacreada = new Raza();
+        Razacreada.setId(3);
+        Razacreada.setNombre("Dalmata");
+        Razacreada.setFechaCreacion(new Date());
+
+        razaLogic.Crear(Razacreada);
+        Razacreada.setNombre("Danes");
+        razaLogic.Actualizar(Razacreada);
+        List<Raza> ListaRaza = razaLogic.ObtenerRaza();
+        razaLogic.Eliminar(Razacreada.getId());
 
 
         //-------Prueba de metodos crud de Vacuna
@@ -56,7 +57,6 @@ public class Main {
         VacunaCreada.setEdad(23);
         VacunaCreada.setIdPaciente(2);
 
-
         vacunaLogic.Crear(VacunaCreada);
         VacunaCreada.setNombreVaccuna("H1N1");
         vacunaLogic.Actualizar(VacunaCreada);
@@ -65,16 +65,29 @@ public class Main {
 
 
         //-------Prueba de metodos crud de raza
-//        Medicamentos medicamentosCreado = new Medicamentos();
-//        medicamentosCreado.setId(3);
-//        medicamentosCreado.setNombre("Paracetamol");
-//        medicamentosCreado.setFechaCreacion(new Date());
-//
-//        medicamentosLogic.Crear(medicamentosCreado);
-//        medicamentosCreado.setNombre("Acetaminofen");
-//        medicamentosLogic.Actualizar(medicamentosCreado);
-//        List<Medicamentos> medicamentosList = medicamentosLogic.ObtenerMedicamentos();
-//        medicamentosLogic.Eliminar(medicamentosCreado.getId());
+        Medicamentos medicamentosCreado = new Medicamentos();
+        medicamentosCreado.setId(3);
+        medicamentosCreado.setNombre("Paracetamol");
+        medicamentosCreado.setFechaCreacion(new Date());
+
+        medicamentosLogic.Crear(medicamentosCreado);
+        medicamentosCreado.setNombre("Acetaminofen");
+        medicamentosLogic.Actualizar(medicamentosCreado);
+        List<Medicamentos> medicamentosList = medicamentosLogic.ObtenerMedicamentos();
+        medicamentosLogic.Eliminar(medicamentosCreado.getId());
+
+
+        //-------Prueba de metodos crud de Categoria
+        Categoria categoria = new Categoria();
+        categoria.setId(3);
+        categoria.setNombre("Paracetamol");
+        categoria.setFechaCreacion(new Date());
+
+        categoriaLogic.Crear(categoria);
+        medicamentosCreado.setNombre("Acetaminofen");
+        categoriaLogic.Actualizar(categoria);
+        List<Categoria> categoriaList = categoriaLogic.ObtenerCategorias();
+        categoriaLogic.Eliminar(medicamentosCreado.getId());
 
 
     }
